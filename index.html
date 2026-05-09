@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JA-Rotina — Sistema de Alta Performance</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-icon">◈</span>
+      <span class="logo-text">JA-Rotina</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#dashboard" class="nav-item active" data-section="dashboard">
+        <span class="nav-icon">⬡</span><span>Dashboard</span>
+      </a>
+      <a href="#daily" class="nav-item" data-section="daily">
+        <span class="nav-icon">◷</span><span>Planejamento Diário</span>
+      </a>
+      <a href="#weekly" class="nav-item" data-section="weekly">
+        <span class="nav-icon">◫</span><span>Semana</span>
+      </a>
+      <a href="#habits" class="nav-item" data-section="habits">
+        <span class="nav-icon">◎</span><span>Hábitos</span>
+      </a>
+      <a href="#goals" class="nav-item" data-section="goals">
+        <span class="nav-icon">◈</span><span>Metas</span>
+      </a>
+      <a href="#study" class="nav-item" data-section="study">
+        <span class="nav-icon">◧</span><span>Estudos</span>
+      </a>
+      <a href="#fitness" class="nav-item" data-section="fitness">
+        <span class="nav-icon">◉</span><span>Fitness & Saúde</span>
+      </a>
+      <a href="#finance" class="nav-item" data-section="finance">
+        <span class="nav-icon">◑</span><span>Finanças</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="current-date" id="currentDate"></div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <div class="topbar-phrase" id="dailyPhrase"></div>
+      <div class="topbar-actions">
+        <button class="btn-icon" id="printBtn" title="Imprimir / Exportar PDF">⬡</button>
+      </div>
+    </header>
+
+    <!-- ══════════════════════════════════════ -->
+    <!--  SECTION: DASHBOARD                   -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="section active" id="dashboard">
+      <div class="section-header">
+        <h1 class="section-title">Dashboard <span class="title-accent">Semanal</span></h1>
+        <p class="section-sub">Visão geral do seu desempenho e consistência</p>
+      </div>
+
+      <!-- KPI CARDS -->
+      <div class="kpi-grid">
+        <div class="kpi-card" data-color="teal">
+          <div class="kpi-icon">◷</div>
+          <div class="kpi-info">
+            <span class="kpi-label">Sono Médio</span>
+            <span class="kpi-value" id="kpiSleep">7h 20min</span>
+          </div>
+        </div>
+        <div class="kpi-card" data-color="sage">
+          <div class="kpi-icon">◉</div>
+          <div class="kpi-info">
+            <span class="kpi-label">Treinos na Semana</span>
+            <span class="kpi-value" id="kpiWorkouts">4 / 5</span>
+          </div>
+        </div>
+        <div class="kpi-card" data-color="amber">
+          <div class="kpi-icon">◎</div>
+          <div class="kpi-info">
+            <span class="kpi-label">Água Hoje</span>
+            <span class="kpi-value" id="kpiWater">2,4 L</span>
+          </div>
+        </div>
+        <div class="kpi-card" data-color="rose">
+          <div class="kpi-icon">◈</div>
+          <div class="kpi-info">
+            <span class="kpi-label">Hábitos Concluídos</span>
+            <span class="kpi-value" id="kpiHabits">6 / 9</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRODUTIVIDADE + METAS -->
+      <div class="dash-row">
+        <div class="card card-wide">
+          <div class="card-header">
+            <h3>Produtividade da Semana</h3>
+          </div>
+          <div class="productivity-bars">
+            <div class="prod-bar-row" data-day="Seg" data-val="82">
+              <span class="prod-day">Seg</span>
+              <div class="prod-track"><div class="prod-fill"></div></div>
+              <span class="prod-pct">82%</span>
+            </div>
+            <div class="prod-bar-row" data-day="Ter" data-val="74">
+              <span class="prod-day">Ter</span>
+              <div class="prod-track"><div class="prod-fill"></div></div>
+              <span class="prod-pct">74%</span>
+            </div>
+            <div class="prod-bar-row" data-day="Qua" data-val="91">
+              <span class="prod-day">Qua</span>
+              <div class="prod-track"><div class="prod-fill"></div></div>
+              <span class="prod-pct">91%</span>
+            </div>
+            <div class="prod-bar-row" data-day="Qui" data-val="65">
+              <span class="prod-day">Qui</span>
+              <div class="prod-track"><div class="prod-fill"></div></div>
+              <span class="prod-pct">65%</span>
+            </div>
+            <div class="prod-bar-row" data-day="Sex" data-val="88">
+              <span class="prod-day">Sex</span>
+              <div class="prod-track"><div class="prod-fill"></div></div>
+              <span class="prod-pct">88%</span>
+            </div>
+            <div class="prod-bar-row" data-day="Sáb" data-val="55">
+              <span class="prod-day">Sáb</span>
+              <div class="prod-track"><div class="prod-fill"></div></div>
+              <span class="prod-pct">55%</span>
+            </div>
+            <div class="prod-bar-row" data-day="Dom" data-val="40">
+              <span class="prod-day">Dom</span>
+              <div class="prod-track"><div class="prod-fill"></div></div>
+              <span class="prod-pct">40%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-narrow">
+          <div class="card-header">
+            <h3>Metas Principais</h3>
+          </div>
+          <div class="goals-list" id="dashGoals">
+            <div class="goal-item">
+              <div class="goal-meta">
+                <span class="goal-name">Ler 12 livros no ano</span>
+                <span class="goal-pct">58%</span>
+              </div>
+              <div class="goal-bar"><div class="goal-fill" style="width:58%"></div></div>
+            </div>
+            <div class="goal-item">
+              <div class="goal-meta">
+                <span class="goal-name">Certificação AWS</span>
+                <span class="goal-pct">35%</span>
+              </div>
+              <div class="goal-bar"><div class="goal-fill" style="width:35%"></div></div>
+            </div>
+            <div class="goal-item">
+              <div class="goal-meta">
+                <span class="goal-name">Correr 5km sem parar</span>
+                <span class="goal-pct">72%</span>
+              </div>
+              <div class="goal-bar"><div class="goal-fill" style="width:72%"></div></div>
+            </div>
+            <div class="goal-item">
+              <div class="goal-meta">
+                <span class="goal-name">Economizar R$10.000</span>
+                <span class="goal-pct">44%</span>
+              </div>
+              <div class="goal-bar"><div class="goal-fill" style="width:44%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONSISTÊNCIA -->
+      <div class="card">
+        <div class="card-header">
+          <h3>Indicador de Consistência — Maio 2025</h3>
+        </div>
+        <div class="consistency-grid" id="consistencyGrid"></div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!--   PLANEJAMENTO DIÁRIO         -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="section" id="daily">
+      <div class="section-header">
+        <h1 class="section-title">Planejamento <span class="title-accent">Diário</span></h1>
+        <p class="section-sub">Organize seu dia com foco e intenção</p>
+      </div>
+
+      <!-- FOCO DO DIA -->
+      <div class="focus-banner">
+        <div class="focus-label">◈ FOCO DO DIA</div>
+        <input type="text" class="focus-input" id="focusInput" placeholder="Qual é o seu foco principal hoje?" />
+      </div>
+
+      <!-- TOP 3 -->
+      <div class="top3-grid">
+        <div class="top3-card">
+          <div class="top3-num">01</div>
+          <input type="text" class="top3-input" placeholder="Prioridade #1" />
+        </div>
+        <div class="top3-card">
+          <div class="top3-num">02</div>
+          <input type="text" class="top3-input" placeholder="Prioridade #2" />
+        </div>
+        <div class="top3-card">
+          <div class="top3-num">03</div>
+          <input type="text" class="top3-input" placeholder="Prioridade #3" />
+        </div>
+      </div>
+
+      <!-- ADICIONAR TAREFA -->
+      <div class="card">
+        <div class="card-header">
+          <h3>Rotina do Dia</h3>
+          <button class="btn-add" id="addTaskBtn">+ Adicionar</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="dailyTable">
+            <thead>
+              <tr>
+                <th>✓</th>
+                <th>Horário</th>
+                <th>Atividade</th>
+                <th>Categoria</th>
+                <th>Prioridade</th>
+                <th>Status</th>
+                <th>Obs.</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="dailyBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- COMO SE SENTIU -->
+      <div class="day-feel-row">
+        <div class="card card-half">
+          <div class="card-header"><h3>Como me senti hoje?</h3></div>
+          <div class="mood-row">
+            <button class="mood-btn" data-mood="😫">😫</button>
+            <button class="mood-btn" data-mood="😞">😞</button>
+            <button class="mood-btn" data-mood="😐">😐</button>
+            <button class="mood-btn" data-mood="😊">😊</button>
+            <button class="mood-btn" data-mood="🔥">🔥</button>
+          </div>
+        </div>
+        <div class="card card-half">
+          <div class="card-header"><h3>Anotações Rápidas</h3></div>
+          <textarea class="quick-notes" placeholder="Pensamentos, ideias, lembretes…"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!--   SEMANA                  -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="section" id="weekly">
+      <div class="section-header">
+        <h1 class="section-title">Planejamento <span class="title-accent">Semanal</span></h1>
+        <p class="section-sub">Visão macro da sua semana</p>
+      </div>
+
+      <div class="week-grid">
+        <div class="week-day-card" data-day="Segunda">
+          <div class="week-day-name">SEG</div>
+          <textarea class="week-notes" placeholder="Tarefas e compromissos…"></textarea>
+        </div>
+        <div class="week-day-card" data-day="Terça">
+          <div class="week-day-name">TER</div>
+          <textarea class="week-notes" placeholder="Tarefas e compromissos…"></textarea>
+        </div>
+        <div class="week-day-card" data-day="Quarta">
+          <div class="week-day-name">QUA</div>
+          <textarea class="week-notes" placeholder="Tarefas e compromissos…"></textarea>
+        </div>
+        <div class="week-day-card" data-day="Quinta">
+          <div class="week-day-name">QUI</div>
+          <textarea class="week-notes" placeholder="Tarefas e compromissos…"></textarea>
+        </div>
+        <div class="week-day-card" data-day="Sexta">
+          <div class="week-day-name">SEX</div>
+          <textarea class="week-notes" placeholder="Tarefas e compromissos…"></textarea>
+        </div>
+        <div class="week-day-card" data-day="Sábado">
+          <div class="week-day-name">SÁB</div>
+          <textarea class="week-notes" placeholder="Tarefas e compromissos…"></textarea>
+        </div>
+        <div class="week-day-card" data-day="Domingo">
+          <div class="week-day-name">DOM</div>
+          <textarea class="week-notes" placeholder="Tarefas e compromissos…"></textarea>
+        </div>
+      </div>
+
+      <div class="dash-row mt-20">
+        <div class="card card-half">
+          <div class="card-header"><h3>Objetivos da Semana</h3></div>
+          <div class="weekly-goals-list" id="weeklyGoalsList">
+            <div class="weekly-goal-row"><input type="checkbox" /><input type="text" placeholder="Meta pessoal…" class="inline-input" /></div>
+            <div class="weekly-goal-row"><input type="checkbox" /><input type="text" placeholder="Meta profissional…" class="inline-input" /></div>
+            <div class="weekly-goal-row"><input type="checkbox" /><input type="text" placeholder="Treino / saúde…" class="inline-input" /></div>
+            <div class="weekly-goal-row"><input type="checkbox" /><input type="text" placeholder="Estudos…" class="inline-input" /></div>
+          </div>
+          <button class="btn-add small" id="addWeekGoal">+ objetivo</button>
+        </div>
+        <div class="card card-half">
+          <div class="card-header"><h3>Revisão Semanal</h3></div>
+          <div class="review-row"><label>O que funcionou bem?</label><textarea class="review-ta" placeholder="…"></textarea></div>
+          <div class="review-row"><label>O que melhorar?</label><textarea class="review-ta" placeholder="…"></textarea></div>
+          <div class="review-row"><label>Aprendizado da semana</label><textarea class="review-ta" placeholder="…"></textarea></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!--  HÁBITOS                     -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="section" id="habits">
+      <div class="section-header">
+        <h1 class="section-title">Controle de <span class="title-accent">Hábitos</span></h1>
+        <p class="section-sub">Consistência constrói excelência — Maio 2025</p>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table class="habit-table" id="habitTable">
+            <thead id="habitHead"></thead>
+            <tbody id="habitBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="dash-row mt-20">
+        <div class="card card-wide">
+          <div class="card-header"><h3>Consistência por Hábito</h3></div>
+          <div id="habitConsistency"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!--  METAS                       -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="section" id="goals">
+      <div class="section-header">
+        <h1 class="section-title">Metas & <span class="title-accent">Objetivos</span></h1>
+        <p class="section-sub">Clareza de propósito gera resultados extraordinários</p>
+      </div>
+
+      <div class="goals-tabs">
+        <button class="gtab active" data-tab="curto">Curto Prazo</button>
+        <button class="gtab" data-tab="medio">Médio Prazo</button>
+        <button class="gtab" data-tab="longo">Longo Prazo</button>
+      </div>
+
+      <div class="goals-panel" id="goalsPanel">
+        <!-- filled by JS -->
+      </div>
+      <button class="btn-add mt-20" id="addGoalBtn">+ Nova Meta</button>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!--  ESTUDOS                     -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="section" id="study">
+      <div class="section-header">
+        <h1 class="section-title">Controle de <span class="title-accent">Estudos</span></h1>
+        <p class="section-sub">Conhecimento é o ativo que ninguém pode te tirar</p>
+      </div>
+
+      <!-- POMODORO -->
+      <div class="card pomodoro-card">
+        <div class="card-header"><h3>⏱ Pomodoro Timer</h3></div>
+        <div class="pomodoro-display">
+          <div class="pomodoro-time" id="pomodoroTime">25:00</div>
+          <div class="pomodoro-phase" id="pomodoroPhase">Foco</div>
+        </div>
+        <div class="pomodoro-controls">
+          <button class="pomo-btn" id="pomStart">▶ Iniciar</button>
+          <button class="pomo-btn secondary" id="pomReset">↺ Reset</button>
+        </div>
+        <div class="pomodoro-sets">
+          <span>Sessões hoje: </span><span id="pomSessions">0</span>
+        </div>
+      </div>
+
+      <!-- LOG DE ESTUDOS -->
+      <div class="card">
+        <div class="card-header">
+          <h3>Log de Estudos</h3>
+          <button class="btn-add" id="addStudyBtn">+ Sessão</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="studyTable">
+            <thead>
+              <tr>
+                <th>Matéria</th>
+                <th>Assunto</th>
+                <th>Tempo</th>
+                <th>Dificuldade</th>
+                <th>Revisão</th>
+                <th>Progresso</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="studyBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!--   FITNESS                     -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="section" id="fitness">
+      <div class="section-header">
+        <h1 class="section-title">Fitness & <span class="title-accent">Saúde</span></h1>
+        <p class="section-sub">Corpo forte, mente poderosa</p>
+      </div>
+
+      <!-- HEALTH DAILY -->
+      <div class="health-row">
+        <div class="health-metric">
+          <label>💧 Água (L)</label>
+          <input type="number" step="0.1" class="metric-input" id="waterInput" value="2.4" />
+        </div>
+        <div class="health-metric">
+          <label>😴 Sono (h)</label>
+          <input type="number" step="0.5" class="metric-input" id="sleepInput" value="7.5" />
+        </div>
+        <div class="health-metric">
+          <label>⚖️ Peso (kg)</label>
+          <input type="number" step="0.1" class="metric-input" id="weightInput" value="75.0" />
+        </div>
+        <div class="health-metric">
+          <label>⚡ Energia (1–5)</label>
+          <input type="number" min="1" max="5" class="metric-input" id="energyInput" value="4" />
+        </div>
+        <button class="btn-add" id="saveHealthBtn">Salvar dia</button>
+      </div>
+
+      <!-- LOG TREINO -->
+      <div class="card mt-20">
+        <div class="card-header">
+          <h3>Log de Treino</h3>
+          <button class="btn-add" id="addExerciseBtn">+ Exercício</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="fitnessTable">
+            <thead>
+              <tr>
+                <th>Exercício</th>
+                <th>Séries</th>
+                <th>Reps</th>
+                <th>Peso (kg)</th>
+                <th>Evolução</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="fitnessBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- HISTÓRICO -->
+      <div class="card mt-20">
+        <div class="card-header"><h3>Histórico Semanal de Saúde</h3></div>
+        <div id="healthHistory"></div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════ -->
+    <!--   FINANÇAS                    -->
+    <!-- ══════════════════════════════════════ -->
+    <section class="section" id="finance">
+      <div class="section-header">
+        <h1 class="section-title">Controle <span class="title-accent">Financeiro</span></h1>
+        <p class="section-sub">Dinheiro gerido é liberdade conquistada</p>
+      </div>
+
+      <!-- RESUMO -->
+      <div class="kpi-grid">
+        <div class="kpi-card" data-color="sage">
+          <div class="kpi-icon">▲</div>
+          <div class="kpi-info">
+            <span class="kpi-label">Entradas</span>
+            <span class="kpi-value" id="finIncome">R$ 0,00</span>
+          </div>
+        </div>
+        <div class="kpi-card" data-color="rose">
+          <div class="kpi-icon">▼</div>
+          <div class="kpi-info">
+            <span class="kpi-label">Saídas</span>
+            <span class="kpi-value" id="finExpense">R$ 0,00</span>
+          </div>
+        </div>
+        <div class="kpi-card" data-color="teal">
+          <div class="kpi-icon">◈</div>
+          <div class="kpi-info">
+            <span class="kpi-label">Saldo</span>
+            <span class="kpi-value" id="finBalance">R$ 0,00</span>
+          </div>
+        </div>
+        <div class="kpi-card" data-color="amber">
+          <div class="kpi-icon">◎</div>
+          <div class="kpi-info">
+            <span class="kpi-label">Meta de Economia</span>
+            <span class="kpi-value" id="finSavings">R$ 1.000</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-20">
+        <div class="card-header">
+          <h3>Transações</h3>
+          <button class="btn-add" id="addFinBtn">+ Lançamento</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="finTable">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Tipo</th>
+                <th>Valor</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="finBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- GRÁFICO GASTOS -->
+      <div class="card mt-20">
+        <div class="card-header"><h3>Distribuição de Gastos</h3></div>
+        <div class="cat-chart" id="catChart"></div>
+      </div>
+    </section>
+
+  </main><!-- /main -->
+
+  <!-- MODAL TASK -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <h2 class="modal-title" id="modalTitle">Nova Tarefa</h2>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer">
+        <button class="btn-cancel" id="modalCancel">Cancelar</button>
+        <button class="btn-save" id="modalSave">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
