@@ -77,7 +77,7 @@ JA-Rotina/
 
 
 ---
-##  Demonstração 
+##  Demonstração: Planejamento diario
 <img src="./JA.png" width="500"/>
 
 ---
