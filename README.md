@@ -75,6 +75,11 @@ JA-Rotina/
 - Saldo calculado automaticamente
 - Gráfico de distribuição de gastos por categoria
 
+
+---
+##  Demonstração 
+<img src="./JA.png" width="500"/>
+
 ---
 
 ##  Como usar
